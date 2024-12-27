@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="DataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50555/DataService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50555/DataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50555/DataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BankService.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDataService_GetAllBanks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBanks" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllBanks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBanksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetBank_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBank" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetBank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccount" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAccountType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountType" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAccountType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetTransactionType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionType" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetTransactionType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllAccounts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAccounts" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllAccounts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllAccountTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAccountTypes" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllAccountTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAccountTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCustomers" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployees" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllTransactions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTransactions" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllTransactions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTransactionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllTransactionTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTransactionTypes" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAllTransactionTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTransactionTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Bank_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Bank" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Bank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_BankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Bank_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Bank" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Bank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_BankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Bank_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Bank" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Bank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_BankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Account_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Account" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Account_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_AccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Account_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Account" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Account_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_AccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Account_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Account" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Account_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_AccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Account_Type_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Account_Type" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Account_Type_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Account_TypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Account_Type_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Account_Type" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Account_Type_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Account_TypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Account_Type_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Account_Type" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Account_Type_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Account_TypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Customer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Customer" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Customer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_CustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Customer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Customer" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Customer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_CustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Customer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Customer" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Customer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_CustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Employee_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Employee" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Employee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_EmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Employee_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Employee" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Employee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_EmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Employee_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Employee" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Employee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_EmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Transaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Transaction" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Transaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_TransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Transaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Transaction" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Transaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_TransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Transaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Transaction" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Transaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_TransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Transaction_Type_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Transaction_Type" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Add_Transaction_Type_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Add_Transaction_TypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Transaction_Type_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Transaction_Type" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Remove_Transaction_Type_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Remove_Transaction_TypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Transaction_Type_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Transaction_Type" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Update_Transaction_Type_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Transaction_TypeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDataService">
+    <wsdl:operation name="GetAllBanks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllBanks" message="tns:IDataService_GetAllBanks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllBanksResponse" message="tns:IDataService_GetAllBanks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetBank" message="tns:IDataService_GetBank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetBankResponse" message="tns:IDataService_GetBank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAccount" message="tns:IDataService_GetAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAccountResponse" message="tns:IDataService_GetAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAccountType" message="tns:IDataService_GetAccountType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAccountTypeResponse" message="tns:IDataService_GetAccountType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetCustomer" message="tns:IDataService_GetCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetCustomerResponse" message="tns:IDataService_GetCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetEmployee" message="tns:IDataService_GetEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetEmployeeResponse" message="tns:IDataService_GetEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetTransaction" message="tns:IDataService_GetTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetTransactionResponse" message="tns:IDataService_GetTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetTransactionType" message="tns:IDataService_GetTransactionType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetTransactionTypeResponse" message="tns:IDataService_GetTransactionType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccounts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllAccounts" message="tns:IDataService_GetAllAccounts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllAccountsResponse" message="tns:IDataService_GetAllAccounts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllAccountTypes" message="tns:IDataService_GetAllAccountTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllAccountTypesResponse" message="tns:IDataService_GetAllAccountTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllCustomers" message="tns:IDataService_GetAllCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllCustomersResponse" message="tns:IDataService_GetAllCustomers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployees">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllEmployees" message="tns:IDataService_GetAllEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllEmployeesResponse" message="tns:IDataService_GetAllEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTransactions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllTransactions" message="tns:IDataService_GetAllTransactions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllTransactionsResponse" message="tns:IDataService_GetAllTransactions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTransactionTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllTransactionTypes" message="tns:IDataService_GetAllTransactionTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllTransactionTypesResponse" message="tns:IDataService_GetAllTransactionTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Bank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Add_Bank" message="tns:IDataService_Add_Bank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Add_BankResponse" message="tns:IDataService_Add_Bank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Bank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Remove_Bank" message="tns:IDataService_Remove_Bank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Remove_BankResponse" message="tns:IDataService_Remove_Bank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Bank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Update_Bank" message="tns:IDataService_Update_Bank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Update_BankResponse" message="tns:IDataService_Update_Bank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Account">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Add_Account" message="tns:IDataService_Add_Account_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Add_AccountResponse" message="tns:IDataService_Add_Account_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Account">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Remove_Account" message="tns:IDataService_Remove_Account_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Remove_AccountResponse" message="tns:IDataService_Remove_Account_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Account">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Update_Account" message="tns:IDataService_Update_Account_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Update_AccountResponse" message="tns:IDataService_Update_Account_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Account_Type">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Add_Account_Type" message="tns:IDataService_Add_Account_Type_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Add_Account_TypeResponse" message="tns:IDataService_Add_Account_Type_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Account_Type">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Remove_Account_Type" message="tns:IDataService_Remove_Account_Type_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Remove_Account_TypeResponse" message="tns:IDataService_Remove_Account_Type_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Account_Type">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Update_Account_Type" message="tns:IDataService_Update_Account_Type_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Update_Account_TypeResponse" message="tns:IDataService_Update_Account_Type_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Customer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Add_Customer" message="tns:IDataService_Add_Customer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Add_CustomerResponse" message="tns:IDataService_Add_Customer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Customer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Remove_Customer" message="tns:IDataService_Remove_Customer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Remove_CustomerResponse" message="tns:IDataService_Remove_Customer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Customer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Update_Customer" message="tns:IDataService_Update_Customer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Update_CustomerResponse" message="tns:IDataService_Update_Customer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Employee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Add_Employee" message="tns:IDataService_Add_Employee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Add_EmployeeResponse" message="tns:IDataService_Add_Employee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Employee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Remove_Employee" message="tns:IDataService_Remove_Employee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Remove_EmployeeResponse" message="tns:IDataService_Remove_Employee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Employee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Update_Employee" message="tns:IDataService_Update_Employee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Update_EmployeeResponse" message="tns:IDataService_Update_Employee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Transaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Add_Transaction" message="tns:IDataService_Add_Transaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Add_TransactionResponse" message="tns:IDataService_Add_Transaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Transaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Remove_Transaction" message="tns:IDataService_Remove_Transaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Remove_TransactionResponse" message="tns:IDataService_Remove_Transaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Transaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Update_Transaction" message="tns:IDataService_Update_Transaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Update_TransactionResponse" message="tns:IDataService_Update_Transaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_Transaction_Type">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Add_Transaction_Type" message="tns:IDataService_Add_Transaction_Type_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Add_Transaction_TypeResponse" message="tns:IDataService_Add_Transaction_Type_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Transaction_Type">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Remove_Transaction_Type" message="tns:IDataService_Remove_Transaction_Type_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Remove_Transaction_TypeResponse" message="tns:IDataService_Remove_Transaction_Type_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Transaction_Type">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Update_Transaction_Type" message="tns:IDataService_Update_Transaction_Type_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Update_Transaction_TypeResponse" message="tns:IDataService_Update_Transaction_Type_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDataService" type="tns:IDataService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllBanks">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllBanks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBank">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetBank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccount">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountType">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAccountType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransaction">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionType">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetTransactionType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccounts">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountTypes">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllAccountTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEmployees">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTransactions">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllTransactions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTransactionTypes">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllTransactionTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Bank">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Add_Bank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Bank">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Remove_Bank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Bank">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Update_Bank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Account">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Add_Account" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Account">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Remove_Account" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Account">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Update_Account" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Account_Type">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Add_Account_Type" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Account_Type">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Remove_Account_Type" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Account_Type">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Update_Account_Type" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Customer">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Add_Customer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Customer">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Remove_Customer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Customer">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Update_Customer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Employee">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Add_Employee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Employee">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Remove_Employee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Employee">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Update_Employee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Transaction">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Add_Transaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Transaction">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Remove_Transaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Transaction">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Update_Transaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_Transaction_Type">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Add_Transaction_Type" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove_Transaction_Type">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Remove_Transaction_Type" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Transaction_Type">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Update_Transaction_Type" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataService">
+    <wsdl:port name="BasicHttpBinding_IDataService" binding="tns:BasicHttpBinding_IDataService">
+      <soap:address location="http://localhost:50555/DataService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

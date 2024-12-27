@@ -8,6 +8,9 @@ EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "bankprojectfront", "BankProjectFront\bankprojectfront.esproj", "{B90D5542-E0BD-42F8-931E-D1025C8CD782}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{275A26A8-01E5-4EBC-88E4-11BA1F528246}"
+	ProjectSection(ProjectDependencies) = postProject
+		{395A681E-A760-4E10-9F03-9ABE5D9D21F8} = {395A681E-A760-4E10-9F03-9ABE5D9D21F8}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankService", "BankService\BankService.csproj", "{395A681E-A760-4E10-9F03-9ABE5D9D21F8}"
 EndProject
