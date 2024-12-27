@@ -15,9 +15,7 @@ namespace BankService.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Bank()
         {
-            //this.Account = new HashSet<Account>();
-            //this.Customer = new HashSet<Customer>();
-            //this.Employee = new HashSet<Employee>();
+ 
         }
 
         public Bank(BankService.Bank bank)
@@ -31,9 +29,7 @@ namespace BankService.Models
             this.Country = bank.Country;
             this.Url = bank.Url;
             this.Routing_Number = bank.Routing_Number;
-            //this.Account = new HashSet<Account>(Conversion_Functions.CreateAccount_Objs(bank.Account));
-            //this.Customer = new HashSet<Customer>(Conversion_Functions.CreateCustomer_Objs(bank.Customer));
-            //this.Employee = new HashSet<Employee>(Conversion_Functions.CreateEmployee_Objs(bank.Employee));
+      
         }
 
         public int Id { get; set; }
@@ -46,16 +42,7 @@ namespace BankService.Models
         public string Url { get; set; }
         public string Routing_Number { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Account> Account { get; set; }
-        //[IgnoreDataMember]
-        //public virtual Bank Bank1 { get; set; }
-        //[IgnoreDataMember]
-        //public virtual Bank Bank2 { get; set; }
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Customer> Customer { get; set; }
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Employee> Employee { get; set; }
+   
 
         public BankService.Bank Make_Bank()
         {
@@ -70,9 +57,7 @@ namespace BankService.Models
                 Country = this.Country,
                 Url = this.Url,
                 Routing_Number = this.Routing_Number,
-                //Account = new HashSet<BankService.Account>(Conversion_Functions.CreateAccounts(this.Account)),
-                //Customer = new HashSet<BankService.Customer>(Conversion_Functions.CreateCustomers(this.Customer)),
-                //Employee = new HashSet<BankService.Employee>(Conversion_Functions.CreateEmployees(this.Employee)),
+             
             };
         }
     }

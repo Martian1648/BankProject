@@ -13,8 +13,7 @@ namespace BankService.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            //this.Account = new HashSet<Account>();
-            //this.Transaction = new HashSet<Transaction>();
+       
         }
 
         public Customer(BankService.Customer customer)
@@ -32,8 +31,7 @@ namespace BankService.Models
             this.Email = customer.Email;
             this.Phone = customer.Phone;
             this.Password = customer.Password;
-            //this.Account = new HashSet<Account>(Conversion_Functions.CreateAccount_Objs(customer.Account));
-            //this.Transaction = new HashSet<Transaction>(Conversion_Functions.CreateTransaction_Objs(customer.Transaction));
+         
         }
 
         public int Id { get; set; }
@@ -50,13 +48,7 @@ namespace BankService.Models
         public string Phone { get; set; }
         public string Password { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Account> Account { get; set; }
-        //[IgnoreDataMember]
-
-        //public virtual Bank Bank { get; set; }
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Transaction> Transaction { get; set; }
+      
         public BankService.Customer Make_Customer()
         {
             return new BankService.Customer()
@@ -74,8 +66,7 @@ namespace BankService.Models
                 Email = this.Email,
                 Phone = this.Phone,
                 Password = this.Password,
-                //Account = new HashSet<BankService.Account>(Conversion_Functions.CreateAccounts((this.Account))),
-                //Transaction = new HashSet<BankService.Transaction>(Conversion_Functions.CreateTransactions(this.Transaction)),
+         
             };
         }
 

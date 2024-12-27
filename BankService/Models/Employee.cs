@@ -46,9 +46,7 @@ namespace BankService.Models
         public string Phone { get; set; }
         public string Job { get; set; }
         public string Password { get; set; }
-        //[IgnoreDataMember]
-
-        //public virtual Bank Bank { get; set; }
+      
         public BankService.Employee Make_Employee()
         {
             return new BankService.Employee()
