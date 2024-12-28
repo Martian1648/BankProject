@@ -8,7 +8,7 @@
 <h2>Employees</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateEmployee")
 </p>
 <table class="table">
     <tr>
@@ -96,9 +96,9 @@
             @Html.DisplayFor(modelItem => item.Zip)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "EditEmployee", new { id=item.Id }) |
             @Html.ActionLink("Details", "GetOneEmployee", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "DeleteEmployee", new { id=item.Id })
         </td>
     </tr>
 }

@@ -167,6 +167,58 @@ namespace UI.Controllers
                 return View("Employee/Employee", thing.GetEmployee(id));
             }
         }
+
+        public ActionResult EditEmployee(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Employee/EditEmployee", thing.GetEmployee(id));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditEmployee(int id, Employee employee)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Update_Employee(employee);
+                return RedirectToAction("GetAllEmployees");
+            }
+        }
+
+        public ActionResult CreateEmployee()
+        {
+            return View("Employee/CreateEmployee", new UI.DataService.Employee());
+        }
+
+        [HttpPost]
+        public ActionResult CreateEmployee(Employee employee)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Add_Employee(employee);
+                return RedirectToAction("GetAllEmployees");
+            }
+        }
+
+        public ActionResult DeleteEmployee(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Employee/DeleteEmployee", thing.GetEmployee(id));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteEmployee(Employee employee)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Remove_Employee(employee.Id);
+                return RedirectToAction("GetAllEmployees");
+            }
+        }
+
         #endregion
 
         //CRUD for Customers

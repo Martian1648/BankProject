@@ -234,6 +234,9 @@
     <Content Include="Views\Home\Account\CreateAccount.cshtml" />
     <Content Include="Views\Home\Account\EditAccount.cshtml" />
     <Content Include="Views\Home\Account\DeleteAccount.cshtml" />
+    <Content Include="Views\Home\Employee\EditEmployee.cshtml" />
+    <Content Include="Views\Home\Employee\CreateEmployee.cshtml" />
+    <Content Include="Views\Home\Employee\DeleteEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
