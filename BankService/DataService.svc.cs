@@ -48,6 +48,7 @@ namespace BankService
             using (var db = new Bank_ProjectEntities())
             {
                 db.Bank.Remove(db.Bank.Find(id));
+                db.Database.ExecuteSqlCommand("DBCC CHECKIDENT ('Bank', RESEED, @p0);", db.Bank.ToArray()[db.Bank.Count() - 2].Id);
                 db.SaveChanges();
             }
         }
@@ -95,6 +96,7 @@ namespace BankService
             using (var db = new Bank_ProjectEntities())
             {
                 db.Account.Remove(db.Account.Find(id));
+                db.Database.ExecuteSqlCommand("DBCC CHECKIDENT ('Account', RESEED, @p0);", db.Account.ToArray()[db.Account.Count() - 2].Id);
                 db.SaveChanges();
             }
         }
@@ -189,6 +191,7 @@ namespace BankService
             using (var db = new Bank_ProjectEntities())
             {
                 db.Customer.Remove(db.Customer.Find(id));
+                db.Database.ExecuteSqlCommand("DBCC CHECKIDENT ('Customer', RESEED, @p0);", db.Customer.ToArray()[db.Customer.Count() - 2].Id);
                 db.SaveChanges();
             }
         }
@@ -236,6 +239,7 @@ namespace BankService
             using (var db = new Bank_ProjectEntities())
             {
                 db.Employee.Remove(db.Employee.Find(id));
+                db.Database.ExecuteSqlCommand("DBCC CHECKIDENT ('Employee', RESEED, @p0);", db.Employee.ToArray()[db.Employee.Count() - 2].Id);
                 db.SaveChanges();
             }
         }
@@ -283,6 +287,7 @@ namespace BankService
             using (var db = new Bank_ProjectEntities())
             {
                 db.Transaction.Remove(db.Transaction.Find(id));
+                db.Database.ExecuteSqlCommand("DBCC CHECKIDENT ('Transaction', RESEED, @p0);", db.Transaction.ToArray()[db.Transaction.Count() - 2].Id);
                 db.SaveChanges();
             }
         }
