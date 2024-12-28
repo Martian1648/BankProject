@@ -240,6 +240,9 @@
     <Content Include="Views\Home\Customer\CreateCustomer.cshtml" />
     <Content Include="Views\Home\Customer\EditCustomer.cshtml" />
     <Content Include="Views\Home\Customer\DeleteCustomer.cshtml" />
+    <Content Include="Views\Home\Transaction\CreateTransaction.cshtml" />
+    <Content Include="Views\Home\Transaction\EditTransaction.cshtml" />
+    <Content Include="Views\Home\Transaction\DeleteTransaction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

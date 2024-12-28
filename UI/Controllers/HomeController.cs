@@ -309,6 +309,58 @@ namespace UI.Controllers
                 return View("Transaction/Transaction", thing.GetTransaction(id));
             }
         }
+
+        public ActionResult EditTransaction(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Transaction/EditTransaction", thing.GetTransaction(id));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditTransaction(int id, Transaction transaction)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Update_Transaction(transaction);
+                return RedirectToAction("GetAllTransactions");
+            }
+        }
+
+        public ActionResult CreateTransaction()
+        {
+            return View("Transaction/CreateTransaction", new UI.DataService.Transaction());
+        }
+
+        [HttpPost]
+        public ActionResult CreateTransaction(Transaction transaction)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Add_Transaction(transaction);
+                return RedirectToAction("GetAllTransactions");
+            }
+        }
+
+        public ActionResult DeleteTransaction(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Transaction/DeleteTransaction", thing.GetTransaction(id));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteTransaction(Transaction transaction)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Remove_Transaction(transaction.Id);
+                return RedirectToAction("GetAllTransactions");
+            }
+        }
+
         #endregion
 
     }
