@@ -218,19 +218,22 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Banks.cshtml" />
-    <Content Include="Views\Home\Accounts.cshtml" />
-    <Content Include="Views\Home\Employees.cshtml" />
-    <Content Include="Views\Home\Transactions.cshtml" />
-    <Content Include="Views\Home\Bank.cshtml" />
-    <Content Include="Views\Home\Account.cshtml" />
-    <Content Include="Views\Home\Employee.cshtml" />
-    <Content Include="Views\Home\Transaction.cshtml" />
-    <Content Include="Views\Home\EditBank.cshtml" />
-    <Content Include="Views\Home\Customers.cshtml" />
-    <Content Include="Views\Home\Customer.cshtml" />
-    <Content Include="Views\Home\CreateBank.cshtml" />
-    <Content Include="Views\Home\DeleteBank.cshtml" />
+    <Content Include="Views\Home\Bank\Banks.cshtml" />
+    <Content Include="Views\Home\Account\Accounts.cshtml" />
+    <Content Include="Views\Home\Employee\Employees.cshtml" />
+    <Content Include="Views\Home\Transaction\Transactions.cshtml" />
+    <Content Include="Views\Home\Bank\Bank.cshtml" />
+    <Content Include="Views\Home\Account\Account.cshtml" />
+    <Content Include="Views\Home\Employee\Employee.cshtml" />
+    <Content Include="Views\Home\Transaction\Transaction.cshtml" />
+    <Content Include="Views\Home\Bank\EditBank.cshtml" />
+    <Content Include="Views\Home\Customer\Customers.cshtml" />
+    <Content Include="Views\Home\Customer\Customer.cshtml" />
+    <Content Include="Views\Home\Bank\CreateBank.cshtml" />
+    <Content Include="Views\Home\Bank\DeleteBank.cshtml" />
+    <Content Include="Views\Home\Account\CreateAccount.cshtml" />
+    <Content Include="Views\Home\Account\EditAccount.cshtml" />
+    <Content Include="Views\Home\Account\DeleteAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

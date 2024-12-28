@@ -10,15 +10,14 @@ namespace UI.Controllers
 {
     public class HomeController : Controller
     {
-        //List and Details for Models
+        //CRUD for Banks
         #region
-        
         public ActionResult GetAllBanks()
         {
             using (var thing = new DataService.DataServiceClient())
             {
                 List<DataService.Bank> banks = thing.GetAllBanks().ToList();
-                return View("Banks", banks);
+                return View("Bank/Banks", banks);
 
             }
         }
@@ -27,107 +26,35 @@ namespace UI.Controllers
         {
             using (var thing = new DataService.DataServiceClient())
             {
-                return View("Bank", thing.GetBank(id));
+                return View("Bank/Bank", thing.GetBank(id));
             }
         }
-
-        public ActionResult GetAllAccounts()
-        {
-            using (var thing = new DataService.DataServiceClient())
-            {
-                return View("Accounts", thing.GetAllAccounts().ToList());
-            }
-        }
-
-        public ActionResult GetOneAccount(int id)
-        {
-            using(var thing = new DataService.DataServiceClient())
-            {
-                return View("Account", thing.GetAccount(id));
-            }
-        }
-
-        public ActionResult GetAllEmployees()
-        {
-            using (var thing = new DataService.DataServiceClient())
-            {
-                return View("Employees", thing.GetAllEmployees().ToList());
-            }
-        }
-
-        public ActionResult GetOneEmployee(int id)
-        {
-            using(var thing =new DataService.DataServiceClient())
-            {
-                return View("Employee", thing.GetEmployee(id));
-            }
-        }
-
-        public ActionResult GetAllCustomers()
-        {
-            using (var thing = new DataService.DataServiceClient())
-            {
-                return View("Customers", thing.GetAllCustomers().ToList());
-            }
-        }
-
-        public ActionResult GetOneCustomer(int id)
-        {
-            using (var thing = new DataService.DataServiceClient())
-            {
-                return View("Customer", thing.GetCustomer(id));
-            }
-        }
-
-        public ActionResult GetAllTransactions()
-        {
-            using (var thing = new DataService.DataServiceClient())
-            {
-                return View("Transactions", thing.GetAllTransactions().ToList());
-            }
-        }
-
-        public ActionResult GetOneTransactions(int id) 
-        {
-            using(var thing =new DataService.DataServiceClient())
-            {
-                return View("Transaction", thing.GetTransaction(id));
-            }
-        }
-        #endregion
-
-        //Edit for Banks
-        #region
         public ActionResult EditBank(int id)
         {
             using (var thing = new DataService.DataServiceClient())
             {
-                return View("EditBank", thing.GetBank(id));
+                return View("Bank/EditBank", thing.GetBank(id));
             }
         }
 
         [HttpPost]
         public ActionResult EditBank(int id, Bank bank)
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 thing.Update_Bank(bank);
                 return RedirectToAction("GetAllBanks");
             }
         }
-        #endregion
-
-        //Create & Delete for Banks
-        #region
         public ActionResult CreateBank()
         {
-            return View("CreateBank", new UI.DataService.Bank());
+            return View("Bank/CreateBank", new UI.DataService.Bank());
         }
 
         [HttpPost]
         public ActionResult CreateBank(Bank bank)
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 thing.Add_Bank(bank);
                 return RedirectToAction("GetAllBanks");
@@ -136,19 +63,146 @@ namespace UI.Controllers
 
         public ActionResult DeleteBank(int id)
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
-                return View("DeleteBank", thing.GetBank(id));
+                return View("Bank/DeleteBank", thing.GetBank(id));
             }
         }
 
         [HttpPost]
         public ActionResult DeleteBank(Bank bank)
         {
-            using(var thing  =new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 thing.Remove_Bank(bank.Id);
                 return RedirectToAction("GetAllBanks");
+            }
+        }
+        #endregion
+
+        //CRUD for Accounts
+        #region
+        public ActionResult GetAllAccounts()
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Account/Accounts", thing.GetAllAccounts().ToList());
+            }
+        }
+
+        public ActionResult GetOneAccount(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Account/Account", thing.GetAccount(id));
+            }
+        }
+
+        public ActionResult EditAccount(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Account/EditAccount", thing.GetAccount(id));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditAccount(int id, Account account)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Update_Account(account);
+                return RedirectToAction("GetAllAccounts");
+            }
+        }
+
+        public ActionResult CreateAccount()
+        {
+            return View("Account/CreateAccount", new UI.DataService.Account());
+        }
+
+        [HttpPost]
+        public ActionResult CreateAccount(Account account)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Add_Account(account);
+                return RedirectToAction("GetAllAccounts");
+            }
+        }
+
+        public ActionResult DeleteAccount(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Account/DeleteAccount", thing.GetAccount(id));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAccount(Account account)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Remove_Account(account.Id);
+                return RedirectToAction("GetAllAccounts");
+            }
+        }
+        #endregion
+
+        //CRUD for Employees
+        #region
+        public ActionResult GetAllEmployees()
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Employee/Employees", thing.GetAllEmployees().ToList());
+            }
+        }
+
+        public ActionResult GetOneEmployee(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Employee/Employee", thing.GetEmployee(id));
+            }
+        }
+        #endregion
+
+        //CRUD for Customers
+        #region
+        public ActionResult GetAllCustomers()
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Customer/Customers", thing.GetAllCustomers().ToList());
+            }
+        }
+
+        public ActionResult GetOneCustomer(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Customer/Customer", thing.GetCustomer(id));
+            }
+        }
+        #endregion
+
+        //CRUD for Transactions
+        #region
+        public ActionResult GetAllTransactions()
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Transaction/Transactions", thing.GetAllTransactions().ToList());
+            }
+        }
+
+        public ActionResult GetOneTransactions(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Transaction/Transaction", thing.GetTransaction(id));
             }
         }
         #endregion

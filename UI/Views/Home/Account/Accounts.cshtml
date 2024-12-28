@@ -8,7 +8,7 @@
 <h2>Accounts</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateAccount")
 </p>
 <table class="table">
     <tr>
@@ -48,9 +48,9 @@
             @Html.DisplayFor(modelItem => item.Type_Number)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "EditAccount", new { id=item.Id }) |
             @Html.ActionLink("Details", "GetOneAccount", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "DeleteAccount", new { id=item.Id })
         </td>
     </tr>
 }
