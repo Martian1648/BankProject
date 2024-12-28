@@ -238,6 +238,58 @@ namespace UI.Controllers
                 return View("Customer/Customer", thing.GetCustomer(id));
             }
         }
+
+        public ActionResult EditCustomer(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Customer/EditCustomer", thing.GetCustomer(id));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditCustomer(int id, Customer customer)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Update_Customer(customer);
+                return RedirectToAction("GetAllCustomers");
+            }
+        }
+
+        public ActionResult CreateCustomer()
+        {
+            return View("Customer/CreateCustomer", new UI.DataService.Customer());
+        }
+
+        [HttpPost]
+        public ActionResult CreateCustomer(Customer customer)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Add_Customer(customer);
+                return RedirectToAction("GetAllCustomers");
+            }
+        }
+
+        public ActionResult DeleteCustomer(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return View("Customer/DeleteCustomer", thing.GetCustomer(id));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCustomer(Customer customer)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.Remove_Customer(customer.Id);
+                return RedirectToAction("GetAllCustomers");
+            }
+        }
+
         #endregion
 
         //CRUD for Transactions
