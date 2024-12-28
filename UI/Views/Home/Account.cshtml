@@ -1,0 +1,59 @@
+﻿@model UI.DataService.Account
+
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Account</h2>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest_Rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interest_Rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type_Number)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
