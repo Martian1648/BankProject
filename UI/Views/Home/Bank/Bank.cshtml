@@ -12,6 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Address)
         </dt>
 
@@ -28,30 +36,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Routing_Number)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Routing_Number)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.State)
         </dt>
 
@@ -60,11 +44,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Url)
+            @Html.DisplayNameFor(model => model.Country)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Url)
+            @Html.DisplayFor(model => model.Country)
         </dd>
 
         <dt>
@@ -75,9 +59,25 @@
             @Html.DisplayFor(model => model.Zip)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            <a href="@Model.Url">@Html.DisplayFor(model => model.Url)</a> 
+        </dd>
+
+        <dt>
+            Routing Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Routing_Number)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "EditBank", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "GetAllBanks")
 </p>

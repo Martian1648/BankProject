@@ -13,6 +13,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Address)
         </dt>
 
@@ -29,6 +37,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Country)
         </dt>
 
@@ -37,27 +53,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Zip)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Routing_Number)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Routing_Number)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.State)
+            @Html.DisplayFor(model => model.Zip)
         </dd>
 
         <dt>
@@ -69,11 +69,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Zip)
+            Routing Number
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Zip)
+            @Html.DisplayFor(model => model.Routing_Number)
         </dd>
 
     </dl>
@@ -83,7 +83,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "GetAllBanks")
         </div>
     }
 </div>
