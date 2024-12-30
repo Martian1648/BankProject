@@ -42,7 +42,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "GetOneBank", new { id = item.Id }, new {@class = "text-reset"})
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Address)
@@ -65,10 +65,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Routing_Number)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "EditBank", new { id=item.Id }) |
-            @Html.ActionLink("Details", "GetOneBank", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteBank", new { id=item.Id })
+        <td class="link-info">
+            @Html.ActionLink("Edit", "EditBank", new { id=item.Id }, new {@class = "text-reset"})
+        </td>
+        <td class="link-danger">
+            @Html.ActionLink("Delete", "DeleteBank", new { id = item.Id }, new { @class = "text-reset" })
         </td>
     </tr>
 }

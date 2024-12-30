@@ -243,6 +243,15 @@
     <Content Include="Views\Home\Transaction\CreateTransaction.cshtml" />
     <Content Include="Views\Home\Transaction\EditTransaction.cshtml" />
     <Content Include="Views\Home\Transaction\DeleteTransaction.cshtml" />
+    <Content Include="Views\Home\BankData.cshtml" />
+    <Content Include="Views\Home\EmployeesofBank.cshtml" />
+    <Content Include="Views\Home\CustomersofBank.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\SelectBank.cshtml" />
+    <Content Include="Views\Home\SelectCustomer.cshtml" />
+    <Content Include="Views\Home\CustomerData.cshtml" />
+    <Content Include="Views\Home\AccountsofCustomer.cshtml" />
+    <Content Include="Views\Home\TransactionsofCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

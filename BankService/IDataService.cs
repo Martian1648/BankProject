@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 
 namespace BankService
@@ -13,7 +14,8 @@ namespace BankService
     [ServiceContract]
     public interface IDataService
     {
-
+        //basic CRUD stuff
+        #region
         [OperationContract]
         IEnumerable<Models.Bank> GetAllBanks();
         [OperationContract]
@@ -115,8 +117,25 @@ namespace BankService
 
         [OperationContract]
         void Update_Transaction_Type(Models.Transaction_Type transactionType);
+        #endregion
+
+        //retreive all customers in given bank
+        [OperationContract]
+        IEnumerable<Models.Customer> GetCustomersofBank(int id);
+
+        //retrieve all employees in given bank
+        [OperationContract]
+        IEnumerable<Models.Employee> GetEmployeesofBank(int id);
+
+        //retrieve all accounts of a given customer
+        [OperationContract]
+        IEnumerable<Models.Account> GetAccountsofCustomer(int id);
+
+        //retrieve all transactions of a given customer
+        [OperationContract]
+        IEnumerable<Models.Transaction> GetTransactionsofCustomer(int id);
     }
 
 
-   
+
 }

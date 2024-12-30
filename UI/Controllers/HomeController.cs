@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -363,5 +364,58 @@ namespace UI.Controllers
 
         #endregion
 
+        //Interface for a bank
+        /*
+         * Display bank name up top
+         * have a list of customers at that bank
+         * make a service that gets all the customers with bank.id as their bankid
+         * have a list of employees at that bank
+         * have a section of bank info
+         */
+
+        public ActionResult GetBankData(int id)
+        {
+            using(var thing = new DataService.DataServiceClient())
+            {
+                Tuple<Bank, List<Customer>, List<Employee>> model =
+                    new Tuple<Bank, List<Customer>, List<Employee>>(thing.GetBank(id), thing.GetCustomersofBank(id), thing.GetEmployeesofBank(id));
+                return View("BankData", model);
+            }
+        }
+
+        public ActionResult SelectBank()
+        {
+            using(var thing = new DataService.DataServiceClient())
+            {
+                return View("SelectBank", thing.GetAllBanks());
+            }
+        }
+
+        public ActionResult GetCustomerData(int id)
+        {
+            using(var thing = new DataService.DataServiceClient())
+            {
+                Tuple<Customer, List<Account>, List<Transaction>> model = 
+                    new Tuple<Customer, List<Account>, List<Transaction>>(thing.GetCustomer(id), thing.GetAccountsofCustomer(id), thing.GetTransactionsofCustomer(id));
+                return View("CustomerData", model);
+            }
+        }
+
+        public ActionResult SelectCustomer()
+        {
+            using(var thing = new DataService.DataServiceClient())
+            {
+                return View("SelectCustomer", thing.GetAllCustomers());
+            }
+        }
+
+        public ActionResult Home()
+        {
+            return View("Home");
+        }
+
     }
+
+   
+
 }

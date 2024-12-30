@@ -1,0 +1,10 @@
+﻿@model Tuple<UI.DataService.Customer, List<UI.DataService.Account>, List<UI.DataService.Transaction>>
+@{
+    ViewBag.Title = "CustomerData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CustomerData</h2>
+@Html.Partial("AccountsofCustomer", Model.Item2)
+@Html.Partial("TransactionsofCustomer", Model.Item3)
+

@@ -1245,6 +1245,30 @@ namespace UI.DataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/Update_Transaction_Type", ReplyAction="http://tempuri.org/IDataService/Update_Transaction_TypeResponse")]
         System.Threading.Tasks.Task Update_Transaction_TypeAsync(UI.DataService.Transaction_Type transactionType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetCustomersofBank", ReplyAction="http://tempuri.org/IDataService/GetCustomersofBankResponse")]
+        System.Collections.Generic.List<UI.DataService.Customer> GetCustomersofBank(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetCustomersofBank", ReplyAction="http://tempuri.org/IDataService/GetCustomersofBankResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Customer>> GetCustomersofBankAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetEmployeesofBank", ReplyAction="http://tempuri.org/IDataService/GetEmployeesofBankResponse")]
+        System.Collections.Generic.List<UI.DataService.Employee> GetEmployeesofBank(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetEmployeesofBank", ReplyAction="http://tempuri.org/IDataService/GetEmployeesofBankResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Employee>> GetEmployeesofBankAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAccountsofCustomer", ReplyAction="http://tempuri.org/IDataService/GetAccountsofCustomerResponse")]
+        System.Collections.Generic.List<UI.DataService.Account> GetAccountsofCustomer(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAccountsofCustomer", ReplyAction="http://tempuri.org/IDataService/GetAccountsofCustomerResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Account>> GetAccountsofCustomerAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetTransactionsofCustomer", ReplyAction="http://tempuri.org/IDataService/GetTransactionsofCustomerResponse")]
+        System.Collections.Generic.List<UI.DataService.Transaction> GetTransactionsofCustomer(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetTransactionsofCustomer", ReplyAction="http://tempuri.org/IDataService/GetTransactionsofCustomerResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Transaction>> GetTransactionsofCustomerAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1552,6 +1576,38 @@ namespace UI.DataService {
         
         public System.Threading.Tasks.Task Update_Transaction_TypeAsync(UI.DataService.Transaction_Type transactionType) {
             return base.Channel.Update_Transaction_TypeAsync(transactionType);
+        }
+        
+        public System.Collections.Generic.List<UI.DataService.Customer> GetCustomersofBank(int id) {
+            return base.Channel.GetCustomersofBank(id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Customer>> GetCustomersofBankAsync(int id) {
+            return base.Channel.GetCustomersofBankAsync(id);
+        }
+        
+        public System.Collections.Generic.List<UI.DataService.Employee> GetEmployeesofBank(int id) {
+            return base.Channel.GetEmployeesofBank(id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Employee>> GetEmployeesofBankAsync(int id) {
+            return base.Channel.GetEmployeesofBankAsync(id);
+        }
+        
+        public System.Collections.Generic.List<UI.DataService.Account> GetAccountsofCustomer(int id) {
+            return base.Channel.GetAccountsofCustomer(id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Account>> GetAccountsofCustomerAsync(int id) {
+            return base.Channel.GetAccountsofCustomerAsync(id);
+        }
+        
+        public System.Collections.Generic.List<UI.DataService.Transaction> GetTransactionsofCustomer(int id) {
+            return base.Channel.GetTransactionsofCustomer(id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Transaction>> GetTransactionsofCustomerAsync(int id) {
+            return base.Channel.GetTransactionsofCustomerAsync(id);
         }
     }
 }

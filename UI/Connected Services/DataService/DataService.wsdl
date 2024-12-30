@@ -217,6 +217,30 @@
   <wsdl:message name="IDataService_Update_Transaction_Type_OutputMessage">
     <wsdl:part name="parameters" element="tns:Update_Transaction_TypeResponse" />
   </wsdl:message>
+  <wsdl:message name="IDataService_GetCustomersofBank_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomersofBank" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetCustomersofBank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomersofBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetEmployeesofBank_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesofBank" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetEmployeesofBank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesofBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAccountsofCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountsofCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetAccountsofCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountsofCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetTransactionsofCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionsofCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_GetTransactionsofCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionsofCustomerResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDataService">
     <wsdl:operation name="GetAllBanks">
       <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllBanks" message="tns:IDataService_GetAllBanks_InputMessage" />
@@ -357,6 +381,22 @@
     <wsdl:operation name="Update_Transaction_Type">
       <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Update_Transaction_Type" message="tns:IDataService_Update_Transaction_Type_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Update_Transaction_TypeResponse" message="tns:IDataService_Update_Transaction_Type_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersofBank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetCustomersofBank" message="tns:IDataService_GetCustomersofBank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetCustomersofBankResponse" message="tns:IDataService_GetCustomersofBank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeesofBank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetEmployeesofBank" message="tns:IDataService_GetEmployeesofBank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetEmployeesofBankResponse" message="tns:IDataService_GetEmployeesofBank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountsofCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAccountsofCustomer" message="tns:IDataService_GetAccountsofCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAccountsofCustomerResponse" message="tns:IDataService_GetAccountsofCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionsofCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetTransactionsofCustomer" message="tns:IDataService_GetTransactionsofCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetTransactionsofCustomerResponse" message="tns:IDataService_GetTransactionsofCustomer_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDataService" type="tns:IDataService">
@@ -669,6 +709,42 @@
     </wsdl:operation>
     <wsdl:operation name="Update_Transaction_Type">
       <soap:operation soapAction="http://tempuri.org/IDataService/Update_Transaction_Type" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersofBank">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetCustomersofBank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeesofBank">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetEmployeesofBank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountsofCustomer">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetAccountsofCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionsofCustomer">
+      <soap:operation soapAction="http://tempuri.org/IDataService/GetTransactionsofCustomer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

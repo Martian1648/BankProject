@@ -1,0 +1,19 @@
+﻿@model Tuple<UI.DataService.Bank, List<UI.DataService.Customer>, List<UI.DataService.Employee>>
+
+@{
+    ViewBag.Title = "BankData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BankData</h2>
+<div class="container">
+    <div class="row">
+        <div class="w-50 col">
+            @Html.Partial("CustomersofBank", Model.Item2)
+        </div>
+        <div class="w-50 col">
+            @Html.Partial("EmployeesofBank", Model.Item3)
+        </div>
+    </div>
+</div>
+

@@ -9,12 +9,15 @@ using BankService;
 using System.Data.Entity;
 
 using System.Data.Entity.Migrations;
+using System.Threading.Tasks;
 namespace BankService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file toGetAllher.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class DataService : IDataService
     {
+        //basic CRUD stuff
+        #region
         public IEnumerable<Models.Bank> GetAllBanks()
         {
             using (var db = new Bank_ProjectEntities())
@@ -349,5 +352,63 @@ namespace BankService
                 db.SaveChanges();
             }
         }
+        #endregion
+
+        //retreive all customers in given bank
+        public IEnumerable<Models.Customer> GetCustomersofBank(int id)
+        {
+            using(var thing = new Bank_ProjectEntities())
+            {
+                var customers = new List<Models.Customer>();
+                foreach (var item in thing.Customer.Where(c => c.Bank_Id == id))
+                {
+                    customers.Add(new Models.Customer(item));    
+                }
+                return customers;
+            }
+        }
+
+        //retrieve all employees in given bank
+        public IEnumerable<Models.Employee> GetEmployeesofBank(int id)
+        {
+            using(var thing = new Bank_ProjectEntities())
+            {
+                var employees = new List<Models.Employee>();
+                foreach(var item in thing.Employee.Where(e => e.Bank_Id == id))
+                {
+                    employees.Add(new Models.Employee(item));
+                }
+                return employees;
+            }
+        }
+
+        //retrieve all accounts of a given customer
+        public IEnumerable<Models.Account> GetAccountsofCustomer(int id)
+        {
+            using(var thing = new Bank_ProjectEntities())
+            {
+                var accounts = new List<Models.Account>();
+                foreach(var item in thing.Account.Where(c =>c.Customer_Id == id))
+                {
+                    accounts.Add(new Models.Account(item));
+                }
+                return accounts;
+            }
+        }
+
+        //retrieve all transactions of a given customer
+        public IEnumerable<Models.Transaction> GetTransactionsofCustomer(int id)
+        {
+            using (var thing = new Bank_ProjectEntities())
+            {
+                var transactions = new List<Models.Transaction>();
+                foreach(var item in thing.Transaction.Where(t => t.Customer_Id == id))
+                {
+                    transactions.Add(new Models.Transaction(item));
+                }
+                return transactions;
+            }
+        }
+
     }
 }
