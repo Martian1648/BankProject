@@ -414,8 +414,24 @@ namespace UI.Controllers
             return View("Home");
         }
 
+        public ActionResult MakeTransaction(int id)
+        {
+            ViewBag.id = id;
+            return View("MakeTransaction", new Transaction());
+        }
+
+        [HttpPost]
+        public ActionResult MakeTransaction(Transaction transaction)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                thing.MakeTransaction(transaction);
+                return RedirectToAction("GetCustomerData", transaction.Customer_Id);
+            }
+        }
+
     }
 
-   
+
 
 }

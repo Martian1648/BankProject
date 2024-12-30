@@ -410,5 +410,32 @@ namespace BankService
             }
         }
 
+        //make transaction
+        public void MakeTransaction(Models.Transaction transaction)
+        {
+            using(var thing = new Bank_ProjectEntities())
+            {
+                if(transaction.Type_Number == 1)
+                {
+                    thing.Account.Find(transaction.To_Account_Id).Balance += transaction.Amount;
+                    transaction.Customer_Id = thing.Account.Find(transaction.To_Account_Id).Customer_Id;
+                }
+                else if(transaction.Type_Number == 2)
+                {
+                    thing.Account.Find(transaction.From_Account_Id).Balance -= transaction.Amount;
+                    transaction.Customer_Id = thing.Account.Find(transaction.From_Account_Id).Customer_Id;
+                }
+                else
+                {
+                    thing.Account.Find(transaction.From_Account_Id).Balance -=transaction.Amount;
+                    thing.Account.Find(transaction.To_Account_Id).Balance += transaction.Amount;
+                    transaction.Customer_Id = thing.Account.Find(transaction.To_Account_Id).Customer_Id;
+                }
+                thing.Transaction.Add(transaction.Make_Transaction());
+                thing.SaveChanges();
+            }
+        }
+
+
     }
 }

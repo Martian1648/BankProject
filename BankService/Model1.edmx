@@ -91,8 +91,9 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Customer_Id" Type="int" Nullable="false" />
           <Property Name="Type_Number" Type="int" Nullable="false" />
-          <Property Name="From_Account_Id" Type="int" Nullable="false" />
+          <Property Name="From_Account_Id" Type="int" />
           <Property Name="To_Account_Id" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="9" Scale="3" Nullable="false" />
         </EntityType>
         <EntityType Name="Transaction_Type">
           <Key>
@@ -186,7 +187,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Transactions_Accounts">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Account">
@@ -377,8 +378,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Customer_Id" Type="Int32" Nullable="false" />
           <Property Name="Type_Number" Type="Int32" Nullable="false" />
-          <Property Name="From_Account_Id" Type="Int32" Nullable="false" />
+          <Property Name="From_Account_Id" Type="Int32" />
           <Property Name="To_Account_Id" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Transactions_Accounts" FromRole="Transaction" ToRole="Account" />
           <NavigationProperty Name="Account1" Relationship="Self.FK_Transactions_Accounts1" FromRole="Transaction" ToRole="Account" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Transactions_Customers" FromRole="Transaction" ToRole="Customer" />
@@ -429,7 +431,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Transactions_Accounts">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Account">
@@ -661,6 +663,7 @@
                 <ScalarProperty Name="Type_Number" ColumnName="Type_Number" />
                 <ScalarProperty Name="From_Account_Id" ColumnName="From_Account_Id" />
                 <ScalarProperty Name="To_Account_Id" ColumnName="To_Account_Id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<UI.DataService.Transaction>
-
 @{
     ViewBag.Title = "Transactions";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,6 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Type_Number)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
         <th></th>
     </tr>
 
@@ -42,9 +44,12 @@
             @Html.DisplayFor(modelItem => item.Type_Number)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditTransaction", new { id=item.Id }) |
-            @Html.ActionLink("Details", "GetOneTransaction", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteTransaction", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditTransaction", new { id = item.Id }) |
+            @Html.ActionLink("Details", "GetOneTransaction", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "DeleteTransaction", new { id = item.Id })
         </td>
     </tr>
 }

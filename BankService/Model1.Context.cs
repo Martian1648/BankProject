@@ -18,10 +18,8 @@ namespace BankService
         public Bank_ProjectEntities()
             : base("name=Bank_ProjectEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

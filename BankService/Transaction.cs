@@ -17,8 +17,9 @@ namespace BankService
         public int Id { get; set; }
         public int Customer_Id { get; set; }
         public int Type_Number { get; set; }
-        public int From_Account_Id { get; set; }
+        public Nullable<int> From_Account_Id { get; set; }
         public Nullable<int> To_Account_Id { get; set; }
+        public decimal Amount { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Account Account1 { get; set; }

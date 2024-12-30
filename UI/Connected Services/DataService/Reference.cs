@@ -872,10 +872,13 @@ namespace UI.DataService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Customer_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int From_Account_IdField;
+        private System.Nullable<int> From_Account_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -897,6 +900,19 @@ namespace UI.DataService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Amount {
+            get {
+                return this.AmountField;
+            }
+            set {
+                if ((this.AmountField.Equals(value) != true)) {
+                    this.AmountField = value;
+                    this.RaisePropertyChanged("Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Customer_Id {
             get {
                 return this.Customer_IdField;
@@ -910,7 +926,7 @@ namespace UI.DataService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int From_Account_Id {
+        public System.Nullable<int> From_Account_Id {
             get {
                 return this.From_Account_IdField;
             }
@@ -1269,6 +1285,12 @@ namespace UI.DataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetTransactionsofCustomer", ReplyAction="http://tempuri.org/IDataService/GetTransactionsofCustomerResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Transaction>> GetTransactionsofCustomerAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/MakeTransaction", ReplyAction="http://tempuri.org/IDataService/MakeTransactionResponse")]
+        void MakeTransaction(UI.DataService.Transaction transaction);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/MakeTransaction", ReplyAction="http://tempuri.org/IDataService/MakeTransactionResponse")]
+        System.Threading.Tasks.Task MakeTransactionAsync(UI.DataService.Transaction transaction);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1608,6 +1630,14 @@ namespace UI.DataService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Transaction>> GetTransactionsofCustomerAsync(int id) {
             return base.Channel.GetTransactionsofCustomerAsync(id);
+        }
+        
+        public void MakeTransaction(UI.DataService.Transaction transaction) {
+            base.Channel.MakeTransaction(transaction);
+        }
+        
+        public System.Threading.Tasks.Task MakeTransactionAsync(UI.DataService.Transaction transaction) {
+            return base.Channel.MakeTransactionAsync(transaction);
         }
     }
 }

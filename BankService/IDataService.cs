@@ -134,6 +134,10 @@ namespace BankService
         //retrieve all transactions of a given customer
         [OperationContract]
         IEnumerable<Models.Transaction> GetTransactionsofCustomer(int id);
+
+        //make deposit
+        [OperationContract]
+        void MakeTransaction(Models.Transaction transaction);
     }
 
 

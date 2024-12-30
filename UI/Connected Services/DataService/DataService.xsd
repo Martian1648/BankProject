@@ -491,4 +491,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="MakeTransaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/BankService.Models" minOccurs="0" name="transaction" nillable="true" type="q33:Transaction" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeTransactionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
