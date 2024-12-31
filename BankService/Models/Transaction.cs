@@ -18,7 +18,7 @@ namespace BankService.Models
             this.Type_Number = transaction.Type_Number;
             this.From_Account_Id = transaction.From_Account_Id;
             this.To_Account_Id = transaction.To_Account_Id;
-
+            this.Amount = transaction.Amount;
         }
         public int Id { get; set; }
         public int Customer_Id { get; set; }
@@ -26,7 +26,7 @@ namespace BankService.Models
         public Nullable<int> From_Account_Id { get; set; }
         public Nullable<int> To_Account_Id { get; set; }
 
-        public decimal Amount { get; set; } = 0;
+        public decimal Amount { get; set; }
 
         public BankService.Transaction Make_Transaction()
         {

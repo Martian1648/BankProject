@@ -7,4 +7,5 @@
 <h2>CustomerData</h2>
 @Html.Partial("AccountsofCustomer", Model.Item2)
 @Html.Partial("TransactionsofCustomer", Model.Item3)
+@Html.ActionLink("Make Transaction", "MakeTransaction", new { id = Model.Item1.Id })
 

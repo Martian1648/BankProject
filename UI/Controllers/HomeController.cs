@@ -303,7 +303,7 @@ namespace UI.Controllers
             }
         }
 
-        public ActionResult GetOneTransactions(int id)
+        public ActionResult GetOneTransaction(int id)
         {
             using (var thing = new DataService.DataServiceClient())
             {
@@ -416,8 +416,8 @@ namespace UI.Controllers
 
         public ActionResult MakeTransaction(int id)
         {
-            ViewBag.id = id;
-            return View("MakeTransaction", new Transaction());
+
+            return View("MakeTransaction", new Transaction() {Customer_Id = id });
         }
 
         [HttpPost]
@@ -426,7 +426,7 @@ namespace UI.Controllers
             using (var thing = new DataService.DataServiceClient())
             {
                 thing.MakeTransaction(transaction);
-                return RedirectToAction("GetCustomerData", transaction.Customer_Id);
+                return RedirectToAction("Home");
             }
         }
 
