@@ -416,8 +416,12 @@ namespace UI.Controllers
 
         public ActionResult MakeTransaction(int id)
         {
-
-            return View("MakeTransaction", new Transaction() {Customer_Id = id });
+            using(var thing = new DataService.DataServiceClient())
+            {
+                Tuple<Transaction, List<Account>> model = new Tuple<Transaction, List<Account>>
+                    (new Transaction() { Customer_Id = id }, thing.GetAccountsofCustomer(id));
+                return View("MakeTransaction", model);
+            }
         }
 
         [HttpPost]
