@@ -1,11 +1,18 @@
-﻿@model Tuple<UI.DataService.Customer, List<UI.DataService.Account>, List<UI.DataService.Transaction>>
+﻿@model Tuple<UI.DataService.Customer, List<UI.DataService.Account>, List<UI.DataService.Bank>, List<UI.DataService.Transaction>>
 @{
     ViewBag.Title = "CustomerData";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CustomerData</h2>
-@Html.Partial("AccountsofCustomer", Model.Item2)
-@Html.Partial("TransactionsofCustomer", Model.Item3)
-@Html.ActionLink("Make Transaction", "MakeTransaction", new { id = Model.Item1.Id })
+<h2 class="text-center">Customer Data for @Model.Item1.First_Name @Model.Item1.Last_Name</h2>
+<hr />
+<div class="row">
+    <div class="col container">
+        @Html.Partial("AccountsofCustomer", new Tuple<List<UI.DataService.Account>, List<UI.DataService.Bank>>(Model.Item2, Model.Item3))
+    </div>
+    <div class="col container">
+        @Html.Partial("TransactionsofCustomer", Model.Item4)
+        @Html.ActionLink("Make Transaction", "MakeTransaction", new { id = Model.Item1.Id }, new { @role = "button", @class = "btn btn-primary" })
 
+    </div>
+</div>

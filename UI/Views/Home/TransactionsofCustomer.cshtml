@@ -1,21 +1,16 @@
 ﻿@model IEnumerable<UI.DataService.Transaction>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h4 class="d-inline-flex position-relative translate-middle-x start-50">Transaction History</h4>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Customer_Id)
+            Amount
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.From_Account_Id)
+            Account(s)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.To_Account_Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type_Number)
+            Type
         </th>
         <th></th>
     </tr>
@@ -23,21 +18,38 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Customer_Id)
+            <a>$</a>@Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.From_Account_Id)
+            @if(item.Type_Number== 1)
+                {
+                    @Html.DisplayFor(modelItem => item.To_Account_Id)
+                }
+            else if(item.Type_Number == 2)
+                {
+                    @Html.DisplayFor(modelItem => item.From_Account_Id)
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.From_Account_Id) <a>-></a> @Html.DisplayFor(modelItem => item.To_Account_Id) 
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.To_Account_Id)
+            @if (item.Type_Number == 1)
+            {
+                <a>Deposit</a>
+            }
+            else if (item.Type_Number == 2)
+            {
+                <a>Withdrawl</a>
+            }
+            else
+            {
+                <a>Transfer</a>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type_Number)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("...", "GetOneTransaction", new {id = item.Id }, new { @role = "button", @class = "btn btn-outline-secondary" })
         </td>
     </tr>
 }

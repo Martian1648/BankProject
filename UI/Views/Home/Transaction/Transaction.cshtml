@@ -1,57 +1,76 @@
-﻿@model UI.DataService.Transaction
+﻿@model Tuple<UI.DataService.Transaction, string>
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>View</h2>
 
 <div>
-    <h4>Transaction</h4>
+    <h4>Transaction #@Model.Item1.Id</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Customer_Id)
+            Customer:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Customer_Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.From_Account_Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.From_Account_Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.To_Account_Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.To_Account_Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Type_Number)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Type_Number)
+            @Html.DisplayFor(model => model.Item1.Customer_Id) - @Html.DisplayFor(model => model.Item2)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Amount)
+            @Html.DisplayNameFor(model => model.Item1.Amount):
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Amount)
+            <a>$</a>@Html.DisplayFor(model => model.Item1.Amount)
         </dd>
+        <dt>
+            Type:
+        </dt>
+
+        <dd>
+            @if (Model.Item1.Type_Number == 1)
+            {
+                <a>Deposit</a>
+            }
+            else if (Model.Item1.Type_Number == 2)
+            {
+                <a>Withdrawl</a>
+            }
+            else
+            {
+                <a>Transfer</a>
+            }
+        </dd>
+        @if (Model.Item1.Type_Number != 1)
+        {
+            <dt>
+                From Account:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item1.From_Account_Id)
+            </dd>
+        }
+
+        @if (Model.Item1.Type_Number != 2)
+        {
+            <dt>
+                To Account:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item1.To_Account_Id)
+            </dd>
+        }
+
+
+
+
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "EditTransaction", new { id = Model.Item1.Id }, new { @role = "button", @class = "btn btn-primary" }) |             
+    @Html.ActionLink("Delete", "DeleteTransaction", new { id = Model.Item1.Id }, new { @role = "button", @class = "btn btn-danger" }) |
+    @Html.ActionLink("Back to Home", "Home",new {},  new { @role = "button", @class = "btn btn-outline-primary" })
 </p>

@@ -95,7 +95,12 @@ namespace UI.Controllers
         {
             using (var thing = new DataService.DataServiceClient())
             {
-                return View("Account/Account", thing.GetAccount(id));
+                string name = "";
+                name += thing.GetCustomer(thing.GetAccount(id).Customer_Id).First_Name;
+                name += thing.GetCustomer(thing.GetAccount(id).Customer_Id).Last_Name;
+                string bank_name = "";
+                bank_name += thing.GetBank(thing.GetAccount(id).Bank_Id).Name;
+                return View("Account/Account", new Tuple<Account, string, string> (thing.GetAccount(id), name, bank_name));
             }
         }
 
@@ -307,7 +312,11 @@ namespace UI.Controllers
         {
             using (var thing = new DataService.DataServiceClient())
             {
-                return View("Transaction/Transaction", thing.GetTransaction(id));
+                string name="";
+                name += thing.GetCustomer(thing.GetTransaction(id).Customer_Id).First_Name;
+                name += thing.GetCustomer(thing.GetTransaction(id).Customer_Id).Last_Name;
+                return View("Transaction/Transaction", new Tuple<Transaction, string>(thing.GetTransaction(id)
+                    , name));
             }
         }
 
@@ -395,8 +404,10 @@ namespace UI.Controllers
         {
             using(var thing = new DataService.DataServiceClient())
             {
-                Tuple<Customer, List<Account>, List<Transaction>> model = 
-                    new Tuple<Customer, List<Account>, List<Transaction>>(thing.GetCustomer(id), thing.GetAccountsofCustomer(id), thing.GetTransactionsofCustomer(id));
+                
+                Tuple<Customer,List<Account>, List<Bank>, List<Transaction>> model = 
+                    new Tuple<Customer, List<Account>, List<Bank>, List<Transaction>>(thing.GetCustomer(id), thing.GetAccountsofCustomer(id), 
+                    thing.GetAllBanks(), thing.GetTransactionsofCustomer(id));
                 return View("CustomerData", model);
             }
         }
