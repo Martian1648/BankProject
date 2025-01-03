@@ -138,6 +138,10 @@ namespace BankService
         //make deposit
         [OperationContract]
         void MakeTransaction(Models.Transaction transaction);
+
+
+        [OperationContract]
+        void Testing_Commands();
     }
 
 

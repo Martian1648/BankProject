@@ -7,9 +7,13 @@ using System.ServiceModel.Web;
 using System.Text;
 using BankService;
 using System.Data.Entity;
-
+using System.IO;
 using System.Data.Entity.Migrations;
 using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
+using System.Text.Json.Nodes;
+using BankService.Models;
 namespace BankService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file toGetAllher.
@@ -433,6 +437,19 @@ namespace BankService
                 }
                 thing.Transaction.Add(transaction.Make_Transaction());
                 thing.SaveChanges();
+            }
+
+
+        }
+
+        public void Testing_Commands()
+        {
+            using (var thing = new Bank_ProjectEntities())
+            {
+                
+                var x = thing.Database.SqlQuery<Temp>($"SELECT Bank.Name, SUM(Account.Balance) AS TotalFunds " +
+                    $"FROM Bank INNER JOIN Account ON Bank.Id = Account.Bank_Id GROUP BY (Bank.Name)").ToList();
+                string o = "";
             }
         }
 

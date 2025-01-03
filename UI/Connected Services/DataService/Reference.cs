@@ -1291,6 +1291,12 @@ namespace UI.DataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/MakeTransaction", ReplyAction="http://tempuri.org/IDataService/MakeTransactionResponse")]
         System.Threading.Tasks.Task MakeTransactionAsync(UI.DataService.Transaction transaction);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/MakeSome", ReplyAction="http://tempuri.org/IDataService/MakeSomeResponse")]
+        void MakeSome();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/MakeSome", ReplyAction="http://tempuri.org/IDataService/MakeSomeResponse")]
+        System.Threading.Tasks.Task MakeSomeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1638,6 +1644,14 @@ namespace UI.DataService {
         
         public System.Threading.Tasks.Task MakeTransactionAsync(UI.DataService.Transaction transaction) {
             return base.Channel.MakeTransactionAsync(transaction);
+        }
+        
+        public void MakeSome() {
+            base.Channel.MakeSome();
+        }
+        
+        public System.Threading.Tasks.Task MakeSomeAsync() {
+            return base.Channel.MakeSomeAsync();
         }
     }
 }

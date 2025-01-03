@@ -14,7 +14,7 @@
 
                 // Iterate over all enabled (non-disabled) inputs/selects
                 $('input:not(:disabled), select:not(:disabled)').each(function () {
-                    if ($(this).val() === "" || $(this).val() === null || $(this).val() === "Please Select One" || $(this).val() === "0.00") {
+                    if ($(this).val() === "" || $(this).val() === null || $(this).val() === "Please Select One") {
                         allFilled = false;
                         return false; // Exit loop early if a field is empty
                     }
@@ -88,10 +88,13 @@
             </div>
         </div>
         <div class="form-group col">
-            <label class="control-label col-md-2 col-form-label" for="Item1_Amount">Amount:</label>
+            <label class="control-label col-md-2 col-form-label" for="Amount">Amount:</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Item1.Amount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Item1.Amount, "", new { @class = "text-danger" })
+                <input class="form-control text-box single-line" data-val="true" 
+                       data-val-number="The field Amount must be a number." 
+                       data-val-required="The Amount field is required." id="Amount" name="Amount" 
+                       type="text" value="0.00">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Amount" data-valmsg-replace="true"></span>
             </div>
         </div>
     </div>

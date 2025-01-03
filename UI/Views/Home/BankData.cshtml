@@ -5,15 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>BankData</h2>
-<div class="container">
-    <div class="row">
-        <div class="w-50 col">
+<h2 class="text-center">Bank Data for @Model.Item1.Name</h2>
+<hr />
+
+    <div class="row container">
+        <div class=" col">
             @Html.Partial("CustomersofBank", Model.Item2)
         </div>
-        <div class="w-50 col">
+        <div class=" col col-7">
             @Html.Partial("EmployeesofBank", Model.Item3)
         </div>
     </div>
-</div>
-

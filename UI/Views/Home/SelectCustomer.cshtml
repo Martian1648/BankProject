@@ -2,19 +2,22 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container">
+
     @for (int i = 0; i < Model.Count(); ++i)
     {
         if (i % 2 == 0)
         {
-            <div class="row">
-                <div class="col">
+            <div class="row row-cols-2 justify-content-center start-50">
+                <div class="col-2 ">
                     @Html.ActionLink(Model.ElementAt(i).First_Name + " " + Model.ElementAt(i).Last_Name,
-                        "GetCustomerData", new { id = Model.ElementAt(i).Id })
+                        "GetCustomerData", new { id = Model.ElementAt(i).Id },
+                        new { @class = "position-relative text-center nav-link" })
                 </div>
-                <div class="col">
+                
+                <div class="col-2 ">
                     @Html.ActionLink(Model.ElementAt(i +1).First_Name + " " + Model.ElementAt(i+1).Last_Name,
-                        "GetCustomerData", new { id = Model.ElementAt(i+1).Id })
+                        "GetCustomerData", new { id = Model.ElementAt(i+1).Id },
+                        new {@class = "position-relative text-center nav-link" })
                 </div>
             </div>
         }
@@ -24,4 +27,4 @@
         }
 
     }
-</div>
+

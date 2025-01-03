@@ -4,10 +4,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Home</h2>
-<div>
-    <h1>Hello! Choose 1!</h1>
-    @Html.ActionLink("I'm a Bank", "SelectBank")
-    @Html.ActionLink("I'm a Customer", "SelectCustomer")
+<div class="container justify-content-center">
+    <h1 class="position-relative text-center">Good Day</h1>
+    <br />
+    
+    <div class="row">
+        <div class="col-4"></div>
+        @Html.ActionLink("I'm a Bank", "SelectBank", new { }, new
+        {
+            @role = "button",
+            @class = "btn btn-outline-primary d-block" +
+        "position-relative col"
+        })
+        <div class="col-1"></div>
+        @Html.ActionLink("I'm a Customer", "SelectCustomer", new { }, new
+        {
+            @role = "button",
+            @class = "btn btn-outline-primary d-block" +
+        "position-relative col"
+        })
+        <div class="col-4"></div>
+    </div>
 </div>
 
