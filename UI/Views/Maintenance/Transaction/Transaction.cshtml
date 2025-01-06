@@ -1,0 +1,76 @@
+﻿@model Tuple<UI.DataService.Transaction, string>
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4>Transaction #@Model.Item1.Id</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Customer:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item1.Customer_Id) - @Html.DisplayFor(model => model.Item2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.Amount):
+        </dt>
+
+        <dd>
+            <a>$</a>@Html.DisplayFor(model => model.Item1.Amount)
+        </dd>
+        <dt>
+            Type:
+        </dt>
+
+        <dd>
+            @if (Model.Item1.Type_Number == 1)
+            {
+                <a>Deposit</a>
+            }
+            else if (Model.Item1.Type_Number == 2)
+            {
+                <a>Withdrawl</a>
+            }
+            else
+            {
+                <a>Transfer</a>
+            }
+        </dd>
+        @if (Model.Item1.Type_Number != 1)
+        {
+            <dt>
+                From Account:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item1.From_Account_Id)
+            </dd>
+        }
+
+        @if (Model.Item1.Type_Number != 2)
+        {
+            <dt>
+                To Account:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item1.To_Account_Id)
+            </dd>
+        }
+
+
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditTransaction", new { id = Model.Item1.Id }, new { @role = "button", @class = "btn btn-primary" }) |             
+    @Html.ActionLink("Delete", "DeleteTransaction", new { id = Model.Item1.Id }, new { @role = "button", @class = "btn btn-danger" }) |
+    @Html.ActionLink("Back to Home", "Home","Home",new {},  new { @role = "button", @class = "btn btn-outline-primary" })
+</p>

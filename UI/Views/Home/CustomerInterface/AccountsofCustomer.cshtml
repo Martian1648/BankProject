@@ -1,0 +1,50 @@
+﻿@model Tuple<List<UI.DataService.Account>, List<UI.DataService.Bank>>
+<h4 class="d-inline-flex position-relative translate-middle-x start-50">Accounts</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Item1.First().Balance)
+        </th>
+        <th>
+            Bank
+        </th>
+        <th>
+            Interest Rate
+        </th>
+        <th>
+            Type
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Item1)
+    {
+        <tr>
+            <td>
+                <a>$</a>@Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Item2.Find(b => b.Id == item.Bank_Id).Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Interest_Rate)<a>%</a>
+            </td>
+            <td>
+                @if (item.Type_Number == 1)
+                {
+                    <a>Checking</a>
+                }
+                else
+                {
+                    <a>Savings</a>
+                }
+
+            </td>
+            <td>
+                @Html.ActionLink("...", "GetOneAccount","Maintenance", new { id = item.Id }, new { @role = "button", @class = "btn btn-outline-secondary" })
+            </td>
+        </tr>
+    }
+
+</table>

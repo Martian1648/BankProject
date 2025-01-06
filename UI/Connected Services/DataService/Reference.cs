@@ -1064,9 +1064,6 @@ namespace UI.DataService {
         private int Customer_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> From_Account_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1103,19 +1100,6 @@ namespace UI.DataService {
                 if ((this.Customer_IdField.Equals(value) != true)) {
                     this.Customer_IdField = value;
                     this.RaisePropertyChanged("Customer_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
                 }
             }
         }

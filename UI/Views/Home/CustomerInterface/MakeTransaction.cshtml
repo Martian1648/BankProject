@@ -1,0 +1,157 @@
+﻿@model Tuple<UI.DataService.Transaction, List<UI.DataService.Account>>
+
+@{
+    ViewBag.Title = "MakeTransaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function checkFormCompletion() {
+                let allFilled = true;
+
+                // Iterate over all enabled (non-disabled) inputs/selects
+                $('input:not(:disabled), select:not(:disabled)').each(function () {
+                    if ($(this).val() === "" || $(this).val() === null || $(this).val() === "Please Select One") {
+                        allFilled = false;
+                        return false; // Exit loop early if a field is empty
+                    }
+                });
+
+                // Enable or disable the submit button
+                if (allFilled) {
+                    $('input[type="submit"]').removeAttr('disabled');
+                } else {
+                    $('input[type="submit"]').attr('disabled', true);
+                }
+            }
+
+            // Listen for changes on relevant inputs/selects
+            $('#Type_Number, #From_Account_Id, #To_Account_Id, input[type="text"], input[type="number"]').on('input change', function () {
+                checkFormCompletion();
+            });
+
+            // Ensure button starts as disabled
+            $('input[type="submit"]').attr('disabled', true);
+
+            // Handle dropdown logic for enabling/disabling fields
+            $('#Type_Number').change(function () {
+                const selectedValue = $(this).val();
+                if (selectedValue === '1') { // Deposit
+                    $('#From_Account_Id').attr('disabled', true);
+                    $('#To_Account_Id').removeAttr('disabled');
+                } else if (selectedValue === '2') { // Withdraw
+                    $('#To_Account_Id').attr('disabled', true);
+                    $('#From_Account_Id').removeAttr('disabled');
+                } else { // Transfer or other
+                    $('#From_Account_Id').removeAttr('disabled');
+                    $('#To_Account_Id').removeAttr('disabled');
+                }
+
+                // Re-check form completion after enabling/disabling fields
+                checkFormCompletion();
+            });
+        });
+
+    </script>
+}
+<h2>Make A Transaction</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group col-4">
+            <label class="control-label col-md-2 col-form-label" for="Type_Number">Type:</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Type_Number, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*<input class="form-control text-box single-line valid" data-val="true"
+                    data-val-number="The field Type_Number must be a number."
+                    data-val-required="The Type_Number field is required." id="Type_Number" name="Type_Number"
+                    type="number" value="0" aria-describedby="Type_Number-error" aria-invalid="false">*@
+
+                <select class="form-select" id="Type_Number" name="Type_Number">
+                    <option selected>Please Select One</option>
+                    <option value="1">Deposit</option>
+                    <option value="2">Withdraw</option>
+                    <option value="3">Transfer</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Item1.Type_Number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col">
+            <label class="control-label col-md-2 col-form-label" for="Amount">Amount:</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" 
+                       data-val-number="The field Amount must be a number." 
+                       data-val-required="The Amount field is required." id="Amount" name="Amount" 
+                       type="text" value="0.00">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Amount" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Item1.Customer_Id, htmlAttributes: new { @class = "control-label col-md-2 visually-hidden" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Item1.Customer_Id, new { htmlAttributes = new { @class = "form-control visually-hidden", @value = Model.Item1.Customer_Id, @readonly = true } })
+            @Html.ValidationMessageFor(model => model.Item1.Customer_Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-4">
+            <label class="control-label col-md-4 col-form-label" for="From_Account_Id">From Account:</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Item1.From_Account_Id, new { htmlAttributes = new { @class = "form-control" } })*@
+                <select class="form-select" id="From_Account_Id" name="From_Account_Id">
+                    <option selected>Please Select One</option>
+                    @foreach (var item in Model.Item2)
+                    {
+                        <option value="@item.Id">@item.Id</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Item1.From_Account_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col position-relative">
+            <label class="control-label col-md-4 col-form-label" for="To_Account_Id">To Account:</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Item1.To_Account_Id, new { htmlAttributes = new { @class = "form-control" } })*@
+                <select class="form-select" id="To_Account_Id" name="To_Account_Id">
+                    <option selected>Please Select One</option>
+                    @foreach (var item in Model.Item2)
+                    {
+                        <option value="@item.Id">@item.Id</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Item1.To_Account_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="form-group col-1">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" disabled />
+            </div>
+        </div>
+        <div class="col">
+
+            @Html.ActionLink("Back to Home", "Home","Home", new { }, new { @role = "button", @class = "btn btn-outline-primary" })
+        </div>
+    </div>
+</div>
+}
+
+
+
+
