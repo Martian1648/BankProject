@@ -100,7 +100,7 @@ namespace UI.Controllers
                 name += thing.GetCustomer(thing.GetAccount(id).Customer_Id).Last_Name;
                 string bank_name = "";
                 bank_name += thing.GetBank(thing.GetAccount(id).Bank_Id).Name;
-                return View("Account/Account", new Tuple<Account, string, string> (thing.GetAccount(id), name, bank_name));
+                return View("Account/Account", new Tuple<Account, string, string>(thing.GetAccount(id), name, bank_name));
             }
         }
 
@@ -312,7 +312,7 @@ namespace UI.Controllers
         {
             using (var thing = new DataService.DataServiceClient())
             {
-                string name="";
+                string name = "";
                 name += thing.GetCustomer(thing.GetTransaction(id).Customer_Id).First_Name;
                 name += thing.GetCustomer(thing.GetTransaction(id).Customer_Id).Last_Name;
                 return View("Transaction/Transaction", new Tuple<Transaction, string>(thing.GetTransaction(id)
@@ -384,7 +384,7 @@ namespace UI.Controllers
 
         public ActionResult GetBankData(int id)
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 Tuple<Bank, List<Customer>, List<Employee>> model =
                     new Tuple<Bank, List<Customer>, List<Employee>>(thing.GetBank(id), thing.GetCustomersofBank(id), thing.GetEmployeesofBank(id));
@@ -394,7 +394,7 @@ namespace UI.Controllers
 
         public ActionResult SelectBank()
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 return View("SelectBank", thing.GetAllBanks());
             }
@@ -402,11 +402,11 @@ namespace UI.Controllers
 
         public ActionResult GetCustomerData(int id)
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
-                
-                Tuple<Customer,List<Account>, List<Bank>, List<Transaction>> model = 
-                    new Tuple<Customer, List<Account>, List<Bank>, List<Transaction>>(thing.GetCustomer(id), thing.GetAccountsofCustomer(id), 
+
+                Tuple<Customer, List<Account>, List<Bank>, List<Transaction>> model =
+                    new Tuple<Customer, List<Account>, List<Bank>, List<Transaction>>(thing.GetCustomer(id), thing.GetAccountsofCustomer(id),
                     thing.GetAllBanks(), thing.GetTransactionsofCustomer(id));
                 return View("CustomerData", model);
             }
@@ -414,7 +414,7 @@ namespace UI.Controllers
 
         public ActionResult SelectCustomer()
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 return View("SelectCustomer", thing.GetAllCustomers());
             }
@@ -427,7 +427,7 @@ namespace UI.Controllers
 
         public ActionResult MakeTransaction(int id)
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 Tuple<Transaction, List<Account>> model = new Tuple<Transaction, List<Account>>
                     (new Transaction() { Customer_Id = id }, thing.GetAccountsofCustomer(id));
@@ -445,8 +445,69 @@ namespace UI.Controllers
             }
         }
 
-    }
+        public ActionResult Seed()
+        {
+            return View("Seed");
+        }
 
+        [HttpPost]
+        public ActionResult Seed(string message = null)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                Random random = new Random();
+                for (int i = 0; i < 10000; i++)
+                {
+                    int id = random.Next(1, 101);
+                    var x = thing.GetAccountsofCustomer(id);
+                    bool randbool = random.Next(0, 2) == 0;
+                    int type = random.Next(1, 4);
+                    if (type == 1)
+                    {
+                        thing.MakeTransaction(new Transaction()
+                        {
+                            Amount = 1.00m,
+                            To_Account_Id = randbool == true ? x.First().Id : x.Last().Id,
+                            Type_Number = type
+                        });
+                    }
+                    else if (type == 2)
+                    {
+                        thing.MakeTransaction(new Transaction()
+                        {
+                            Amount = 1.00m,
+                            From_Account_Id = randbool == true ? x.First().Id : x.Last().Id,
+                            Type_Number = type
+                        });
+                    }
+                    else if (type == 3)
+                    {
+                        thing.MakeTransaction(new Transaction()
+                        {
+                            Amount = 1.00m,
+                            From_Account_Id = randbool == true ? x.First().Id : x.Last().Id,
+                            To_Account_Id = randbool == true ? x.Last().Id : x.First().Id,
+                            Type_Number = type
+                        });
+                    }
+
+                    
+                }
+                return RedirectToAction("Home");
+
+            }
+
+        }
+
+        public ActionResult See_Transaction_Report(int id, int type)
+        {
+            using(var thing = new DataService.DataServiceClient())
+            {
+                var report = thing.Report_Transactions_of_Bank(type, id);
+                return PartialView("Report", report);
+            }
+        }
+    }
 
 
 }

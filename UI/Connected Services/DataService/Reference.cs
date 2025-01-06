@@ -1048,6 +1048,114 @@ namespace UI.DataService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Report_Bank_Transaction", Namespace="http://schemas.datacontract.org/2004/07/BankService.Models")]
+    [System.SerializableAttribute()]
+    public partial struct Report_Bank_Transaction : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Customer_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> From_Account_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> To_Account_IdField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Amount {
+            get {
+                return this.AmountField;
+            }
+            set {
+                if ((this.AmountField.Equals(value) != true)) {
+                    this.AmountField = value;
+                    this.RaisePropertyChanged("Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Customer_Id {
+            get {
+                return this.Customer_IdField;
+            }
+            set {
+                if ((this.Customer_IdField.Equals(value) != true)) {
+                    this.Customer_IdField = value;
+                    this.RaisePropertyChanged("Customer_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> From_Account_Id {
+            get {
+                return this.From_Account_IdField;
+            }
+            set {
+                if ((this.From_Account_IdField.Equals(value) != true)) {
+                    this.From_Account_IdField = value;
+                    this.RaisePropertyChanged("From_Account_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> To_Account_Id {
+            get {
+                return this.To_Account_IdField;
+            }
+            set {
+                if ((this.To_Account_IdField.Equals(value) != true)) {
+                    this.To_Account_IdField = value;
+                    this.RaisePropertyChanged("To_Account_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DataService.IDataService")]
     public interface IDataService {
@@ -1292,11 +1400,17 @@ namespace UI.DataService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/MakeTransaction", ReplyAction="http://tempuri.org/IDataService/MakeTransactionResponse")]
         System.Threading.Tasks.Task MakeTransactionAsync(UI.DataService.Transaction transaction);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/MakeSome", ReplyAction="http://tempuri.org/IDataService/MakeSomeResponse")]
-        void MakeSome();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/Testing_Commands", ReplyAction="http://tempuri.org/IDataService/Testing_CommandsResponse")]
+        void Testing_Commands();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/MakeSome", ReplyAction="http://tempuri.org/IDataService/MakeSomeResponse")]
-        System.Threading.Tasks.Task MakeSomeAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/Testing_Commands", ReplyAction="http://tempuri.org/IDataService/Testing_CommandsResponse")]
+        System.Threading.Tasks.Task Testing_CommandsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/Report_Transactions_of_Bank", ReplyAction="http://tempuri.org/IDataService/Report_Transactions_of_BankResponse")]
+        System.Collections.Generic.List<UI.DataService.Report_Bank_Transaction> Report_Transactions_of_Bank(int type, int bank_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/Report_Transactions_of_Bank", ReplyAction="http://tempuri.org/IDataService/Report_Transactions_of_BankResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Report_Bank_Transaction>> Report_Transactions_of_BankAsync(int type, int bank_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1646,12 +1760,20 @@ namespace UI.DataService {
             return base.Channel.MakeTransactionAsync(transaction);
         }
         
-        public void MakeSome() {
-            base.Channel.MakeSome();
+        public void Testing_Commands() {
+            base.Channel.Testing_Commands();
         }
         
-        public System.Threading.Tasks.Task MakeSomeAsync() {
-            return base.Channel.MakeSomeAsync();
+        public System.Threading.Tasks.Task Testing_CommandsAsync() {
+            return base.Channel.Testing_CommandsAsync();
+        }
+        
+        public System.Collections.Generic.List<UI.DataService.Report_Bank_Transaction> Report_Transactions_of_Bank(int type, int bank_id) {
+            return base.Channel.Report_Transactions_of_Bank(type, bank_id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<UI.DataService.Report_Bank_Transaction>> Report_Transactions_of_BankAsync(int type, int bank_id) {
+            return base.Channel.Report_Transactions_of_BankAsync(type, bank_id);
         }
     }
 }

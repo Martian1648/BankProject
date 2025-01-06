@@ -197,6 +197,9 @@
     <Content Include="Connected Services\DataService\UI.DataService.Transaction_Type.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\DataService\UI.DataService.Report_Bank_Transaction.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\MyScript.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
@@ -254,6 +257,8 @@
     <Content Include="Views\Home\TransactionsofCustomer.cshtml" />
     <Content Include="Views\Home\MakeTransaction.cshtml" />
     <Content Include="Views\Home\CustomerData.cshtml" />
+    <Content Include="Views\Home\Seed.cshtml" />
+    <Content Include="Views\Home\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

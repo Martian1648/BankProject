@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Seed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Seed" class="btn btn-primary" />
+            }
+

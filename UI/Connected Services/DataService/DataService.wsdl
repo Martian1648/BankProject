@@ -247,11 +247,17 @@
   <wsdl:message name="IDataService_MakeTransaction_OutputMessage">
     <wsdl:part name="parameters" element="tns:MakeTransactionResponse" />
   </wsdl:message>
-  <wsdl:message name="IDataService_MakeSome_InputMessage">
-    <wsdl:part name="parameters" element="tns:MakeSome" />
+  <wsdl:message name="IDataService_Testing_Commands_InputMessage">
+    <wsdl:part name="parameters" element="tns:Testing_Commands" />
   </wsdl:message>
-  <wsdl:message name="IDataService_MakeSome_OutputMessage">
-    <wsdl:part name="parameters" element="tns:MakeSomeResponse" />
+  <wsdl:message name="IDataService_Testing_Commands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Testing_CommandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Report_Transactions_of_Bank_InputMessage">
+    <wsdl:part name="parameters" element="tns:Report_Transactions_of_Bank" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_Report_Transactions_of_Bank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Report_Transactions_of_BankResponse" />
   </wsdl:message>
   <wsdl:portType name="IDataService">
     <wsdl:operation name="GetAllBanks">
@@ -414,9 +420,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDataService/MakeTransaction" message="tns:IDataService_MakeTransaction_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDataService/MakeTransactionResponse" message="tns:IDataService_MakeTransaction_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="MakeSome">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/MakeSome" message="tns:IDataService_MakeSome_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/MakeSomeResponse" message="tns:IDataService_MakeSome_OutputMessage" />
+    <wsdl:operation name="Testing_Commands">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Testing_Commands" message="tns:IDataService_Testing_Commands_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Testing_CommandsResponse" message="tns:IDataService_Testing_Commands_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Report_Transactions_of_Bank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/Report_Transactions_of_Bank" message="tns:IDataService_Report_Transactions_of_Bank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/Report_Transactions_of_BankResponse" message="tns:IDataService_Report_Transactions_of_Bank_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDataService" type="tns:IDataService">
@@ -781,8 +791,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="MakeSome">
-      <soap:operation soapAction="http://tempuri.org/IDataService/MakeSome" style="document" />
+    <wsdl:operation name="Testing_Commands">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Testing_Commands" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Report_Transactions_of_Bank">
+      <soap:operation soapAction="http://tempuri.org/IDataService/Report_Transactions_of_Bank" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

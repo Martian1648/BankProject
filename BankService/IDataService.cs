@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -142,6 +143,9 @@ namespace BankService
 
         [OperationContract]
         void Testing_Commands();
+
+        [OperationContract]
+        IEnumerable<Report_Bank_Transaction> Report_Transactions_of_Bank(int type, int bank_id);
     }
 
 

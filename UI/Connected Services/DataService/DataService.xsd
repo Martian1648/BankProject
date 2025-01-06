@@ -503,14 +503,29 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="MakeSome">
+  <xs:element name="Testing_Commands">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="MakeSomeResponse">
+  <xs:element name="Testing_CommandsResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Report_Transactions_of_Bank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="type" type="xs:int" />
+        <xs:element minOccurs="0" name="bank_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Report_Transactions_of_BankResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/BankService.Models" minOccurs="0" name="Report_Transactions_of_BankResult" nillable="true" type="q34:ArrayOfReport_Bank_Transaction" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

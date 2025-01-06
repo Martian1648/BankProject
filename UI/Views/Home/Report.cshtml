@@ -1,0 +1,19 @@
+﻿@model List<UI.DataService.Report_Bank_Transaction>
+
+<table class="table">
+    <thead class="sticky-top table-light">
+        <tr >
+            <th>Amount</th>
+            <th>Account(s)</th>
+            <th>Customer</th>
+        </tr>
+    </thead>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Amount</td>
+            <td>@item.From_Account_Id<a>-></a>@item.To_Account_Id</td>
+            <td>@item.Customer_Id</td>
+        </tr>
+    }
+</table>

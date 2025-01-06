@@ -446,10 +446,23 @@ namespace BankService
         {
             using (var thing = new Bank_ProjectEntities())
             {
-                
-                var x = thing.Database.SqlQuery<Temp>($"SELECT Bank.Name, SUM(Account.Balance) AS TotalFunds " +
-                    $"FROM Bank INNER JOIN Account ON Bank.Id = Account.Bank_Id GROUP BY (Bank.Name)").ToList();
+                var bank_id = 1;
+                var x = thing.Database.SqlQuery<Temp>("SELECT t.Amount, c.Email, b.Name  FROM dbo.[Transaction] t " +
+                    $" INNER JOIN dbo.Customer c  ON t.Customer_Id = c.Id INNER JOIN dbo.Bank b " +
+                    $"ON c.Bank_Id = b.Id WHERE t.Type_Number = 1 AND b.Id = {bank_id};").ToList();
                 string o = "";
+            }
+        }
+
+        public IEnumerable<Report_Bank_Transaction> Report_Transactions_of_Bank(int type, int bank_id)
+        {
+            using(var thing  = new Bank_ProjectEntities())
+            {
+                var x = thing.Database.SqlQuery<Report_Bank_Transaction>("SELECT t.Amount,t.From_Account_Id," +
+                    "t.To_Account_Id,t.Customer_Id FROM dbo.[Transaction] t " +
+                    $"INNER JOIN dbo.Customer c ON t.Customer_Id = c.Id INNER JOIN dbo.Bank b " +
+                    $"ON c.Bank_Id = b.Id WHERE t.Type_Number={type} AND b.Id={bank_id};").ToList();
+                return x;
             }
         }
 
