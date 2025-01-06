@@ -1,0 +1,21 @@
+﻿@model UI.DataService.Employee
+
+
+<dl>
+    <dt>Name:</dt>
+    <dd>@Model.First_Name @Model.Middle_Initial<a>.</a> @Model.Last_Name</dd>
+    <dt>Role:</dt>
+    <dd>@Model.Job</dd>
+    <dt>Address:</dt>
+    <dd>@Model.Address @Model.City, @Model.State @Model.Zip</dd>
+    <dt>Email:</dt>
+    <dd>@Model.Email</dd>
+    <dt>Phone:</dt>
+    <dd>@Model.Phone</dd>
+    <dt></dt>
+    <dd>
+        @Html.ActionLink("Edit", "EditEmployee","Maintenance", new { id = Model.Id }, new { @role = "button", @class = "btn btn-warning" }) |
+        @Html.ActionLink("Delete", "DeleteEmployee","Maintenance", new { id = Model.Id }, new { @role = "button", @class = "btn btn-danger" })
+    </dd>
+</dl>
+

@@ -1,6 +1,13 @@
 ﻿@model IEnumerable<UI.DataService.Customer>
 
-<h4 class="d-inline-flex position-relative translate-middle-x start-50">Customers</h4>
+
+
+<h4 class="d-inline-flex position-relative translate-middle-x start-50">
+    Customers   
+</h4>
+<br />
+<a class="text-reset fs-6 d-inline-flex position-relative translate-middle-x start-50" 
+   href="@Url.Action("CreateCustomer","Maintenance",new { })">Create New</a>
 
 <table class="table">
     <tr>
@@ -25,9 +32,15 @@
             </td>
 
             <td>
-                @Html.ActionLink("...", "GetOneCustomer", "Maintenance", new { id = item.Id }, new { @role = "button", @class = "btn btn-outline-secondary" })
-            </td>
-        </tr>
+             <a class="btn btn-outline-secondary details_button" data-bs-toggle="offcanvas" href="#ViewCustomer" role="button" 
+                aria-controls="ViewCustomer" onclick="RenderDetailsCustomer(@item.Id)">...</a>
+</td>
+
+</tr>
     }
+    
 
 </table>
+<div class="offcanvas offcanvas-start ps-1" tabindex="-1" id="ViewCustomer">
+
+</div>

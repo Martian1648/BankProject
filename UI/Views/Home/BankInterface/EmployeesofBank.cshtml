@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<UI.DataService.Employee>
 
 <h4 class="d-inline-flex position-relative translate-middle-x start-50">Employees</h4>
+<br />
+<a class="text-reset fs-6 d-inline-flex position-relative translate-middle-x start-50"
+   href="@Url.Action("CreateEmployee","Maintenance",new { })">Create New</a>
 
 <table class="table">
     <tr>
@@ -31,9 +34,13 @@
             </td>
 
             <td>
-                @Html.ActionLink("...", "GetOneEmployee", "Maintenance", new { id = item.Id }, new { @role = "button", @class = "btn btn-outline-secondary" })
+                <a class="btn btn-outline-secondary details_button" data-bs-toggle="offcanvas" href="#ViewEmployee" role="button"
+                   aria-controls="ViewEmployee" onclick="RenderDetailsEmployee(@item.Id)">...</a>
             </td>
         </tr>
     }
 
 </table>
+<div class="offcanvas offcanvas-end ps-1" tabindex="-1" id="ViewEmployee">
+
+</div>

@@ -1,0 +1,22 @@
+﻿@model UI.DataService.Customer
+@{ 
+    string phone = $"{Model.Phone[0]}{Model.Phone[1]}{Model.Phone[2]}-" +
+            $"{Model.Phone[3]}{Model.Phone[4]}{Model.Phone[5]}-" +
+            $"{Model.Phone[6]}{Model.Phone[7]}{Model.Phone[8]}{Model.Phone[9]}";
+}
+
+    <dl>
+        <dt>Name:</dt>
+        <dd>@Model.First_Name @Model.Middle_Initial<a>.</a> @Model.Last_Name</dd>
+        <dt>Address:</dt>
+        <dd>@Model.Address @Model.City, @Model.State @Model.Zip</dd>
+        <dt>Email:</dt>
+        <dd>@Model.Email</dd>
+        <dt>Phone:</dt>
+        <dd>@phone</dd>
+        <dt></dt>
+        <dd>
+            @Html.ActionLink("Edit", "EditCustomer", "Maintenance", new { id = Model.Id }, new { @role = "button", @class = "btn btn-warning" }) |
+            @Html.ActionLink("Delete", "DeleteCustomer", "Maintenance", new { id = Model.Id }, new { @role = "button", @class = "btn btn-danger" })
+        </dd>
+    </dl>

@@ -2,26 +2,52 @@
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquery")
-    <script>
+<script type="text/javascript">
         $("#transactionType").change(function () {
         let selectedType = $("#transactionType").val(); // Get the selected type value
 
         // Send an AJAX request to fetch the updated report
+            $.ajax({
+                url: '@Url.Action("See_Transaction_Report")', // Action URL
+                method: 'GET',
+                data: { type: selectedType, id: '@Model.Item1.Id' }, // Pass new type and ID
+                success: function (data) {
+                    // Update the transaction report div with the new content
+                    $("#transactionReport").html(data);
+                },
+                error: function () {
+                    alert("Failed to update the transaction report.");
+                }
+            });
+        });
+    function RenderDetailsCustomer(Id) {
         $.ajax({
-            url: '@Url.Action("See_Transaction_Report")', // Action URL
+            url: '@Url.Action("View_Customer")',
             method: 'GET',
-            data: { type: selectedType, id: '@Model.Item1.Id' }, // Pass new type and ID
+            data: { id: Id },
             success: function (data) {
-                // Update the transaction report div with the new content
-                $("#transactionReport").html(data);
+                $("#ViewCustomer").html(data);
             },
             error: function () {
-                alert("Failed to update the transaction report.");
+                alert("Failed");
             }
         });
-    });
-    
-    </script>
+    }
+
+    function RenderDetailsEmployee(Id) {
+        $.ajax({
+        url: '@Url.Action("View_Employee")',
+        method: 'GET',
+        data: { id: Id },
+        success: function (data) {
+            $("#ViewEmployee").html(data);
+        },
+        error: function () {
+            alert("Failed");
+        }
+        });
+    };
+</script>
 
 }
 @{
@@ -30,6 +56,10 @@
 }
 
 <h2 class="text-center">Bank Data for @Model.Item1.Name</h2>
+<h6 class="text-center">
+    @Model.Item1.Address @Model.Item1.City, @Model.Item1.State @Model.Item1.Zip
+    | <a href="@Model.Item1.Url">@Model.Item1.Url</a> | @Model.Item1.Routing_Number
+</h6>
 <hr />
 
 <div class="row container">
@@ -47,7 +77,7 @@
         <option>Please select one</option>
         <option value="1">Deposits</option>
         <option value="2">Withdrawls</option>
-        <option value="3" >Transfers</option>
+        <option value="3">Transfers</option>
     </select>
 </div>
 <br />

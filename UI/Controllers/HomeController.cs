@@ -147,6 +147,22 @@ namespace UI.Controllers
                 return PartialView("BankInterface/ReportBankTransaction", report);
             }
         }
+
+        public ActionResult View_Customer(int id)
+        {
+            using(var thing = new DataService.DataServiceClient())
+            {
+                return PartialView("BankInterface/ViewCustomer", thing.GetCustomer(id));
+            }
+        }
+
+        public ActionResult View_Employee(int id)
+        {
+            using (var thing = new DataService.DataServiceClient())
+            {
+                return PartialView("BankInterface/ViewEmployee", thing.GetEmployee(id));
+            }
+        }
     }
 
 
