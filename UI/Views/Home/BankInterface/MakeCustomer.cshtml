@@ -1,0 +1,128 @@
+﻿@model UI.DataService.Customer
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        function CheckForm() {
+            let Filled = true;
+            $("[required]").each(
+                function () {
+                    if ($(this).val() === null || $(this).val() === "") {
+                        Filled = false;
+                        return false;
+                    }    
+                }
+            )
+            if (Filled) {
+                $('#SubmitButton').removeAttr('disabled');
+            }
+            else {
+                $('#SubmitButton').attr('disabled', true);
+            }
+        }
+
+        
+
+        $('.numeric').on('input',
+            function (event) {
+                event.target.value = event.target.value.replace(/[^0-9]/g, "");
+            })
+
+    </script>
+}
+
+<div class="container">
+    <form action="@Url.Action("Make_Customer")" method="post" novalidate="novalidate">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row row-cols-auto">
+                <div class="col-2 form-group ">
+                    <label class="form-label" for="First_Name" id="First_Name">First Name</label>
+                    <input class="form-control" id="First_Name" name="First_Name" type="text" required onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="First_Name" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="col-1 form-group ">
+                    <label class="form-label" for="Middle_Initial" id="Middle_Initial">Initial</label>
+                    <input class="form-control" id="Middle_Initial" name="Middle_Initial" maxlength="1" type="text" onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="Middle_Initial" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="col-2 form-group ">
+                    <label class="form-label" for="Last_Name" id="Last_Name">Last Name</label>
+                    <input class="form-control" id="Last_Name" name="Last_Name" type="text" required onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="Last_Name" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="row row-cols-auto">
+                <div class="col form-group ">
+                    <label class="form-label" for="Address" id="Address">Address</label>
+                    <input class="form-control" id="Address" name="Address" type="text" required onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="Address" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="col-2 form-group ">
+                    <label class="form-label" for="City" id="City">City</label>
+                    <input class="form-control" id="City" name="City" type="text" required onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="City" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="col-1 form-group ">
+                    <label class="form-label align-middle" for="State" id="State">State</label>
+                    <input class="form-control text-uppercase" id="State" name="State" type="text" required maxlength="2" pattern="[A-Z]" onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="State" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="col form-group ">
+                    <label class="form-label" for="Country" id="Country">Country</label>
+                    <input class="form-control" id="Country" name="Country" type="text" required onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="Country" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="col-1 form-group ">
+                    <label class="form-label" for="Zip" id="Zip">Zip</label>
+                    <input class="form-control numeric" id="Zip" name="Zip" type="text" required maxlength="5" pattern="[0-9]" onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="Zip" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="row row-cols-auto">
+                <div class="col form-group ">
+                    <label class="form-label" for="Email" id="Email">Email</label>
+                    <input class="form-control" id="Email" name="Email" type="email" required onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="col form-group ">
+                    <label class="form-label" for="Phone" id="Phone">Phone</label>
+                    <input class="form-control numeric" id="Phone" name="Phone" type="text" required maxlength="10" pattern="[0-9]" onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="col form-group ">
+                    <label class="form-label" for="Password" id="Password">Password</label>
+                    <input class="form-control" id="Password" name="Password" type="password" required onchange="CheckForm()" placeholder="" />
+                    <span data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group form-floating">
+                <input class="form-control text-box single-line" id="Bank_Id" name="Bank_Id" type="text"
+                       value="@Model.Bank_Id" readonly hidden />
+            </div>
+             <br />
+            <div class="form-group form-floating">
+                <input class="btn btn-default" type="submit" id="SubmitButton" disabled />
+            </div>
+        </div>
+    </form>
+</div>
+

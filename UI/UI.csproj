@@ -264,6 +264,7 @@
     <Content Include="Views\Home\BankInterface\ReportBankTransaction.cshtml" />
     <Content Include="Views\Home\BankInterface\ViewCustomer.cshtml" />
     <Content Include="Views\Home\BankInterface\ViewEmployee.cshtml" />
+    <Content Include="Views\Home\BankInterface\MakeCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

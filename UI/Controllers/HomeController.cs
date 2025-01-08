@@ -11,7 +11,7 @@ namespace UI.Controllers
 {
     public class HomeController : Controller
     {
-        
+
 
         //Interface for a bank
         /*
@@ -131,7 +131,7 @@ namespace UI.Controllers
                         });
                     }
 
-                    
+
                 }
                 return RedirectToAction("Home");
 
@@ -141,7 +141,7 @@ namespace UI.Controllers
 
         public ActionResult See_Transaction_Report(int id, int type)
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 var report = thing.Report_Transactions_of_Bank(type, id);
                 return PartialView("BankInterface/ReportBankTransaction", report);
@@ -150,7 +150,7 @@ namespace UI.Controllers
 
         public ActionResult View_Customer(int id)
         {
-            using(var thing = new DataService.DataServiceClient())
+            using (var thing = new DataService.DataServiceClient())
             {
                 return PartialView("BankInterface/ViewCustomer", thing.GetCustomer(id));
             }
@@ -161,6 +161,21 @@ namespace UI.Controllers
             using (var thing = new DataService.DataServiceClient())
             {
                 return PartialView("BankInterface/ViewEmployee", thing.GetEmployee(id));
+            }
+        }
+
+        public ActionResult Make_Customer(int id)
+        {
+            return View("BankInterface/MakeCustomer", new Customer() { Bank_Id = id});
+        }
+
+        [HttpPost]
+        public ActionResult Make_Customer(Customer customer)
+        {
+            using(var thing = new DataService.DataServiceClient())
+            {
+                thing.Add_Customer(customer);
+                return RedirectToAction("GetBankData", new {id = customer.Bank_Id});
             }
         }
     }

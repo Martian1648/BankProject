@@ -64,6 +64,12 @@
 
 <div class="row container">
     <div class=" col">
+        <h4 class="d-inline-flex position-relative translate-middle-x start-50">
+            Customers
+        </h4>
+        <br />
+        <a class="text-reset fs-6 d-inline-flex position-relative translate-middle-x start-50"
+           href="@Url.Action("Make_Customer","Home",new {id = Model.Item1.Id})">Create New</a>
         @Html.Partial("BankInterface/CustomersofBank", Model.Item2)
     </div>
     <div class=" col col-7">
